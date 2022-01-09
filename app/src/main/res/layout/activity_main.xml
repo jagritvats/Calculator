@@ -11,15 +11,18 @@
     <TextView
         android:id="@+id/inputbox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="56dp"
+        android:layout_height="76dp"
+        android:textSize="56sp"
         android:textColor="@color/black"
         android:text="0"
+        android:ellipsize="marquee"
+        android:singleLine="true"
         android:gravity="right"/>
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TableRow
             android:layout_width="match_parent"
@@ -29,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40pt"
                 android:text="AC"
-                android:textSize="38sp"
+                android:textSize="32sp"
                 android:layout_weight="1"
                 android:id="@+id/btAC"
                 android:layout_marginRight="1pt"
@@ -39,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40pt"
                 android:text="+/-"
-                android:textSize="38sp"
+                android:textSize="32sp"
                 android:layout_weight="1"
                 android:layout_marginRight="1pt"
                 android:id="@+id/btplusminus"
@@ -51,7 +54,7 @@
                 android:text="%"
                 android:layout_weight="1"
                 android:layout_marginRight="1pt"
-                android:textSize="38sp"
+                android:textSize="32sp"
                 android:id="@+id/btpercent"
                 android:onClick="getOperator" />
 
@@ -61,7 +64,7 @@
                 android:layout_height="40pt"
                 android:text="/"
                 android:layout_weight="1"
-                android:textSize="38sp"
+                android:textSize="32sp"
                 android:id="@+id/btdivide"
                 android:onClick="getOperator"
                 android:backgroundTint="@android:color/holo_red_dark"/>
@@ -228,6 +231,16 @@
             android:textSize="38dp"
             android:id="@+id/btdot"
             android:onClick="getNumbers"
+            android:layout_marginRight="1pt"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40pt"
+            android:text="⌫"
+            android:textSize="38dp"
+            android:id="@+id/btbacksp"
+            android:onClick="backsp"
             android:layout_marginRight="1pt"
             android:layout_weight="1"/>
 

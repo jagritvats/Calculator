@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         inputbox = findViewById(R.id.inputbox)
+
+        inputbox.setSelected(true); // for overflow marquee
     }
 
     var dot:Boolean=false
@@ -84,21 +86,21 @@ class MainActivity : AppCompatActivity() {
         if(oldNum!=""){
             newNum = inputbox.text.toString()
             if(newNum==""){
-                return;
+                return
             }
         }else{
             oldNum = inputbox.text.toString()
             if(oldNum==""){
-                return;
+                return
             }
         }
 
         if (oldNum!="" && newNum!=""){
             // if oldNum and newNum are both some values i.e. they haven't been operated
-            equaloperator(View(this)); // A workaround to pass a dummy parameter
+            equaloperator(View(this)) // A workaround to pass a dummy parameter
             oldNum = inputbox.text.toString()
         }
-        val selectedOp = view as Button;
+        val selectedOp = view as Button
         when(selectedOp.id){
             R.id.btadd->{
                 operator="+"
@@ -123,33 +125,33 @@ class MainActivity : AppCompatActivity() {
 
     fun equaloperator(v: View){
         if(oldNum==""){
-            return;
+            return
         }
-        newNum = inputbox.text.toString();
+        newNum = inputbox.text.toString()
         if(newNum==""){
-            return;
+            return
         }
 
-        var result:Double = 0.0;
+        var result:Double = 0.0
 
         when(operator){
             "x"->{
-                result = oldNum.toDouble() * newNum.toDouble();
+                result = oldNum.toDouble() * newNum.toDouble()
             }
             "+"->{
-                result = oldNum.toDouble() + newNum.toDouble();
+                result = oldNum.toDouble() + newNum.toDouble()
             }
             "-"->{
-                result = oldNum.toDouble() - newNum.toDouble();
+                result = oldNum.toDouble() - newNum.toDouble()
             }
             "/"->{
-                result = oldNum.toDouble() / newNum.toDouble();
+                result = oldNum.toDouble() / newNum.toDouble()
             }
             "%"->{
-                result = oldNum.toDouble()/100 * newNum.toDouble();
+                result = oldNum.toDouble()/100 * newNum.toDouble()
             }
         }
-        if(result-result.toInt() == 0.0){
+        if(result < Int.MAX_VALUE && (result-result.toInt() == 0.0)){
             inputbox.text = result.toInt().toString()
         }else{
             inputbox.text = result.toString()
@@ -162,19 +164,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signchange(view: View){
-        var txt:String = inputbox.text.toString();
+        var txt:String = inputbox.text.toString()
         if(txt=="" || txt.toDouble() ==0.0){
-            return;
+            return
         }
 
         if(txt[0] !='-'){
-            txt = "-$txt";
+            txt = "-$txt"
 
         }else{
             txt = txt.substring(1,)
         }
 
-        inputbox.text = txt;
+        inputbox.text = txt
+    }
+
+    fun backsp(v: View){
+        var txt:String = inputbox.text.toString()
+        if(txt==""){
+            return
+        }
+        if(txt.length==2 && txt[0]=='-'){
+            txt = ""
+        }else{
+            txt = txt.substring(0,txt.length-1)
+        }
+//        if(txt==""){
+//            newop = true
+//            newNum = ""
+//        }
+        inputbox.text = txt
+
     }
 
     fun cleanInput(view:View){
