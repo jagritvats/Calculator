@@ -1,7 +1,7 @@
 # Calculator
 Calulator Android Application using Kotlin
 
-(APK :)[https://github.com/jagritvats/Calculator/releases/tag/v1.0]
+[Download APK](https://github.com/jagritvats/Calculator/releases/tag/v1.0)
 
 # Features
 
